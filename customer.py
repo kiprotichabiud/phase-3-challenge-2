@@ -1,12 +1,38 @@
+from order import Order
+
 class Customer:
     def __init__(self, name):
         self.name = name
+        self._validate_name()
+        self._orders = []
+
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+        self._validate_name()
+
+
+    def _validate_name(self):
+        if not isinstance(self._name, str) or not (1 <= len(self._name) <= 15):
+            raise ValueError("Name must be a string between 1 and 15 characters.")
+        
         
     def orders(self):
-        pass
+        return self._orders
+        
     
     def coffees(self):
-        pass
+        return list({order.coffee for order in self._orders})
     
     def create_order(self, coffee, price):
-        pass
+         order = Order(self, coffee, price)
+         self._orders.append(order)
+         return order
+    
+customer1 = Customer("Abiud")
+print(customer1) 
