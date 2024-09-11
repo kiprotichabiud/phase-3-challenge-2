@@ -43,7 +43,6 @@ class Order:
         return (f"Order(customer={self.customer.name}, coffee={self.coffee.name}, "
                 f"price={self.price:.2f})")
     
-# Example usage
 if __name__ == "__main__":
     customer = Customer("Abiud")
     coffee = Coffee("Latte")
